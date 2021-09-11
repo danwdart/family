@@ -1,8 +1,8 @@
 {-# OPTIONS_GHC -Wno-unused-matches #-}
 
 -- import Data.Either
-import Data.Gedcom
-import qualified Data.Text as T
+import           Data.Gedcom
+import qualified Data.Text   as T
 
 main :: IO ()
 main = do
