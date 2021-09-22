@@ -3,7 +3,7 @@
 -- import           Data.Either
 import           Data.Gedcom
 import           Data.Gedcom.Structure
-import qualified Data.Text   as T
+import qualified Data.Text             as T
 
 main :: IO ()
 main = do
