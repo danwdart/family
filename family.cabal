@@ -1,10 +1,10 @@
 cabal-version:       3.0
+-- Newer versions complain
 name:                family
 version:             0.0.0
 synopsis:            Family stuff
 homepage:            https://github.com/danwdart/family
-license:             MIT
-license-file:        LICENSE
+license:             AGPL-3.0-only
 author:              Dan Dart
 maintainer:          git@dandart.co.uk
 category:            Genealogy
@@ -13,7 +13,7 @@ build-type:          Simple
 
 executable family
   main-is:             Main.hs
-  build-depends:       base >=4.12.0.0
+  build-depends:       base >=4.15.0.0
                      , gedcom >= 0.0.3.0
                      , text
                      , transformers
