@@ -4,3 +4,4 @@ dist-newstyle
 result*
 .direnv
 *.ged
+hie.yaml
