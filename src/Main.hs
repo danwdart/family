@@ -1,18 +1,25 @@
+{-# LANGUAGE UnicodeSyntax #-}
 {-# OPTIONS_GHC -Wno-unused-matches #-}
 
--- import           Data.Either
+import           Control.Monad
+import           Control.Monad.IO.Class
+import           Control.Monad.Trans.Except
 import           Data.Gedcom
 import           Data.Gedcom.Structure
-import qualified Data.Text             as T
+import           Data.Maybe
+import qualified Data.Text                  as T
 
-main :: IO ()
+main ∷ IO ()
 main = do
-    Right (gedcom, xref) <- parseGedcomFile "familytree.ged"
-    let firstPerson = (\(Right a) -> a) $ flip gdLookup xref $ head $ gedcomIndividual gedcom
-    -- let family = rights $ flip gdLookup xref <$> gedcomFamily gedcom
-    let personsName = (\(Name a b) -> a) . personalNameName . (\(Just a) -> a) . individualName
-    let firstPersonName = personsName firstPerson
-    let number = length $ gedcomIndividual gedcom
-    putStrLn $ "First person named: " <> T.unpack firstPersonName
-    putStrLn $ "Number of individuals: " <> show number
-    pure ()
+    result <- parseGedcomFile "familytree.ged"
+    case result of
+        Right (gedcom, xref) -> void . runExceptT $ do
+            firstPerson <- except . flip gdLookup xref . head $ gedcomIndividual gedcom
+            -- let family = rights $ flip gdLookup xref <$> gedcomFamily gedcom
+            let personsName = (\(Name a b) -> a) . personalNameName . fromJust . individualName
+            let firstPersonName = personsName firstPerson
+            let number = length $ gedcomIndividual gedcom
+            liftIO . putStrLn $ "First person named: " <> T.unpack firstPersonName
+            liftIO . putStrLn $ "Number of individuals: " <> show number
+            pure ()
+        _ -> error "Failure"
