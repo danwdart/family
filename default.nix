@@ -11,6 +11,8 @@ let
         rev = "4c02b68297e41bea94496e8494e647c568fe08ca";
         sha256 = "1v02a9w678zmqa09513j24pkqjva5l3qik9qlyhw4px8fqddnaai";
       }) {});
+      # Atm Nix breaks this.
+      haskell-src-meta = self.callHackage "haskell-src-meta" "0.8.8" {};
       family = self.callCabal2nix "family" (gitignore ./.) {};
     };
   };
