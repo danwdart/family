@@ -16,7 +16,7 @@ let
       }) {});
       # Atm Nix breaks this.
       haskell-src-meta = self.callHackage "haskell-src-meta" "0.8.8" {};
-      family = self.callCabal2nix "family" (gitignore ./.) {};
+      family = lib.dontHaddock (self.callCabal2nix "family" (gitignore ./.) {});
     };
   };
   shell = myHaskellPackages.shellFor {
