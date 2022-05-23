@@ -1,6 +1,6 @@
 source-repository-package
   type: git
-  location: git://github.com/danwdart/hs-gedcom.git
+  location: https://github.com/danwdart/hs-gedcom.git
   tag: cff413cfad99d6a2c6594a286b9d7446fc357ff3
 
 packages: ./family.cabal
