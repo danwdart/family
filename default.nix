@@ -1,6 +1,9 @@
-{ nixpkgs ? import (builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/haskell-updates.tar.gz") {},
-  haskell-tools ? import (builtins.fetchTarball "https://github.com/danwdart/haskell-tools/archive/master.tar.gz") {},
-  compiler ? "ghc923"
+{ nixpkgs ? import <nixpkgs> {},
+  haskell-tools ? import (builtins.fetchTarball "https://github.com/danwdart/haskell-tools/archive/master.tar.gz") {
+    nixpkgs = nixpkgs;
+    compiler = compiler;
+  },
+  compiler ? "ghc924"
 }:
 let
   gitignore = nixpkgs.nix-gitignore.gitignoreSourcePure [ ./.gitignore ];
@@ -34,7 +37,5 @@ let
 in
 {
   inherit shell;
-  inherit exe;
-  inherit myHaskellPackages;
-  family = myHaskellPackages.family;
+  family = lib.justStaticExecutables (myHaskellPackages.family);
 }
