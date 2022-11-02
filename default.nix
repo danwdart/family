@@ -11,6 +11,7 @@ let
   lib = nixpkgs.pkgs.haskell.lib;
   myHaskellPackages = nixpkgs.pkgs.haskell.packages.${compiler}.override {
     overrides = self: super: rec {
+      # not yet uploaded to hackage
       gedcom = lib.doJailbreak (self.callCabal2nix "gedcom" (nixpkgs.fetchFromGitHub {
         owner = "CLowcay";
         repo = "hs-gedcom";
@@ -18,7 +19,6 @@ let
         sha256 = "1v02a9w678zmqa09513j24pkqjva5l3qik9qlyhw4px8fqddnaai";
       }) {});
       # Atm Nix breaks this.
-      haskell-src-meta = self.callHackage "haskell-src-meta" "0.8.8" {};
       family = lib.dontHaddock (self.callCabal2nix "family" (gitignore ./.) {});
     };
   };
