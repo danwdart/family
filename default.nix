@@ -3,7 +3,7 @@
     nixpkgs = nixpkgs;
     compiler = compiler;
   },
-  compiler ? "ghc94"
+  compiler ? "ghc92"
 }:
 let
   gitignore = nixpkgs.nix-gitignore.gitignoreSourcePure [ ./.gitignore ];
@@ -12,12 +12,12 @@ let
   myHaskellPackages = nixpkgs.pkgs.haskell.packages.${compiler}.override {
     overrides = self: super: rec {
       # not yet uploaded to hackage
-      gedcom = lib.doJailbreak (self.callCabal2nix "gedcom" (nixpkgs.fetchFromGitHub {
-        owner = "CLowcay";
-        repo = "hs-gedcom";
-        rev = "148acdf9664d234d9ec67121448b92d786aa4461";
-        sha256 = "1v02a9w678zmqa09513j24pkqjva5l3qik9qlyhw4px8fqddnaai";
-      }) {});
+      #gedcom = lib.doJailbreak (self.callCabal2nix "gedcom" (nixpkgs.fetchFromGitHub {
+      #  owner = "CLowcay";
+      #  repo = "hs-gedcom";
+      #  rev = "148acdf9664d234d9ec67121448b92d786aa4461";
+      #  sha256 = "1v02a9w678zmqa09513j24pkqjva5l3qik9qlyhw4px8fqddnaai";
+      #}) {});
       # Atm Nix breaks this.
       family = lib.dontHaddock (self.callCabal2nix "family" (gitignore ./.) {});
     };
