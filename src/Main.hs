@@ -1,12 +1,12 @@
 {-# OPTIONS_GHC -Wno-unused-matches #-}
 
-import           Control.Monad
-import           Control.Monad.IO.Class
-import           Control.Monad.Trans.Except
-import           Data.Gedcom
-import           Data.Gedcom.Structure
-import           Data.Maybe
-import qualified Data.Text                  as T
+import Control.Monad
+import Control.Monad.IO.Class
+import Control.Monad.Trans.Except
+import Data.Gedcom
+import Data.Gedcom.Structure
+import Data.Maybe
+import Data.Text                  qualified as T
 
 main ∷ IO ()
 main = do
