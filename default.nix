@@ -17,10 +17,10 @@ let
 
       # Release to cabal not yet made
       gedcom = lib.doJailbreak (self.callCabal2nix "gedcom" (nixpkgs.fetchFromGitHub {
-        owner = "CLowcay";
+        owner = "danwdart";
         repo = "hs-gedcom";
-        rev = "148acdf9664d234d9ec67121448b92d786aa4461";
-        sha256 = "Q6bycMXI4a9ZP5J/Cok4WN/ynjoWGybvwWrAy9Za/ag=";
+        rev = "ac784e81dccd12f5fb6e4363c9e74c61757664ea";
+        sha256 = "9TqLq/jk/r0J2x3/GSbgyC1AtWdu4mQ3MmpQ+HpaNUE=";
       }) {});
     };
   };
