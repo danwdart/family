@@ -12,15 +12,15 @@ let
   myHaskellPackages = nixpkgs.pkgs.haskell.packages.${compiler}.override {
     overrides = self: super: rec {
       family = lib.dontHaddock (self.callCabal2nix "family" (gitignore ./.) {});
-      # text-all = lib.doJailbreak (lib.markUnbroken super.text-all);
+      text-all = lib.doJailbreak (lib.markUnbroken super.text-all);
       # gedcom = lib.doJailbreak (super.gedcom);
 
       # Release to cabal not yet made
       gedcom = lib.doJailbreak (self.callCabal2nix "gedcom" (nixpkgs.fetchFromGitHub {
-        owner = "danwdart";
+        owner = "CLowcay";
         repo = "hs-gedcom";
-        rev = "ac784e81dccd12f5fb6e4363c9e74c61757664ea";
-        sha256 = "9TqLq/jk/r0J2x3/GSbgyC1AtWdu4mQ3MmpQ+HpaNUE=";
+        rev = "148acdf9664d234d9ec67121448b92d786aa4461";
+        sha256 = "Q6bycMXI4a9ZP5J/Cok4WN/ynjoWGybvwWrAy9Za/ag=";
       }) {});
     };
   };
