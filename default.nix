@@ -3,7 +3,7 @@
     nixpkgs = nixpkgs;
     compiler = compiler;
   },
-  compiler ? "ghc94"
+  compiler ? "ghc910"
 }:
 let
   gitignore = nixpkgs.nix-gitignore.gitignoreSourcePure [ ./.gitignore ];
@@ -17,10 +17,10 @@ let
 
       # Release to cabal not yet made
       gedcom = lib.doJailbreak (self.callCabal2nix "gedcom" (nixpkgs.fetchFromGitHub {
-        owner = "CLowcay";
+        owner = "danwdart";
         repo = "hs-gedcom";
-        rev = "148acdf9664d234d9ec67121448b92d786aa4461";
-        sha256 = "Q6bycMXI4a9ZP5J/Cok4WN/ynjoWGybvwWrAy9Za/ag=";
+        rev = "901c7f611381cfb7a59e5cc2e0327adc04ae4d65";
+        sha256 = "fLP69x++nzkAwWAtaWWfL84AvfIDMW7bX+/z148n7f4=";
       }) {});
     };
   };
