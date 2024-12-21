@@ -1,4 +1,4 @@
-{-# OPTIONS_GHC -Wno-unused-matches #-}
+{-# OPTIONS_GHC -Wno-unused-matches -Wno-x-partial #-}
 
 module Main (main) where
 
