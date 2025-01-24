@@ -23,8 +23,8 @@ executable family
   build-depends:
     , base          >=4.20.0.0
     , gedcom        >=0.3.2.0
+    , mtl
     , text
-    , transformers
 
   hs-source-dirs:     src
   ghc-options:
