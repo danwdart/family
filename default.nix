@@ -22,6 +22,8 @@ let
         rev = "901c7f611381cfb7a59e5cc2e0327adc04ae4d65";
         sha256 = "fLP69x++nzkAwWAtaWWfL84AvfIDMW7bX+/z148n7f4=";
       }) {});
+
+      text = self.callHackage "text" "2.1.2" {};
     };
   };
   shell = myHaskellPackages.shellFor {

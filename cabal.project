@@ -5,4 +5,4 @@ source-repository-package
 
 packages: ./family.cabal
 
-allow-newer: text
+allow-newer: text, mtl
