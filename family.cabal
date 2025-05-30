@@ -27,8 +27,10 @@ executable family
     , text    ^>=2.1.2
 
   hs-source-dirs:     src
+  if !os(wasi)
+    ghc-options: -threaded -rtsopts -with-rtsopts=-N
   ghc-options:
-    -Wall -Werror -haddock -threaded -rtsopts -with-rtsopts=-N
+    -Wall -Werror -haddock
     -Weverything -Wno-unsafe -Wno-safe -Wno-missing-import-lists
     -Wno-missing-export-lists -Wno-implicit-prelude
     -Wno-missing-safe-haskell-mode -Wno-missing-kind-signatures
