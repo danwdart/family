@@ -11,8 +11,9 @@ import Data.Gedcom.Structure
 import Data.Maybe
 import Data.Text                  qualified as T
 import Data.Text.IO               qualified as TIO
+import GHC.Stack
 
-main ∷ IO ()
+main ∷ HasCallStack => IO ()
 main = do
     result <- parseGedcomFile "familytree.ged"
     case result of
