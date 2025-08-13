@@ -1,14 +1,14 @@
 { nixpkgs ? import <nixpkgs> {},
   haskell-tools ? import (builtins.fetchTarball "https://github.com/danwdart/haskell-tools/archive/master.tar.gz") {
-    nixpkgs = nixpkgs;
-    compiler = compiler;
+    inherit nixpkgs;
+    inherit compiler;
   },
   compiler ? "ghc912"
 }:
 let
   gitignore = nixpkgs.nix-gitignore.gitignoreSourcePure [ ./.gitignore ];
   tools = haskell-tools compiler;
-  lib = nixpkgs.pkgs.haskell.lib;
+  inherit (nixpkgs.pkgs.haskell) lib;
   myHaskellPackages = nixpkgs.pkgs.haskell.packages.${compiler}.override {
     overrides = self: super: rec {
       family = lib.dontHaddock (self.callCabal2nix "family" (gitignore ./.) {});
@@ -40,5 +40,5 @@ let
   in
 {
   inherit shell;
-  family = lib.justStaticExecutables (myHaskellPackages.family);
+  family = lib.justStaticExecutables myHaskellPackages.family;
 }
