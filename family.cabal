@@ -17,8 +17,8 @@ executable family
   default-language:   GHC2024
   default-extensions: UnicodeSyntax
   build-depends:
-    , base    >=4.21.0.0 && <4.23.0.0
-    , gedcom  ^>=0.3.2.0
+    , base    >=4.21 && <4.23
+    , gedcom  ^>=0.3.2
     , mtl     ^>=2.3.1
     , text    ^>=2.1.2
 
