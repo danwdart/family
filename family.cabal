@@ -1,4 +1,4 @@
-cabal-version:      3.12
+cabal-version:      3.14
 
 -- Newer versions complain
 name:               family
@@ -7,9 +7,9 @@ synopsis:           Family stuff
 homepage:           https://github.com/danwdart/family
 license:            AGPL-3.0-only
 author:             Dan Dart
-maintainer:         git@dandart.co.uk
+maintainer:         cabal@dandart.co.uk
 category:           Genealogy
-extra-source-files: CHANGELOG.md
+extra-doc-files:    CHANGELOG.md
 build-type:         Simple
 
 executable family
